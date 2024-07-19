@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Utente\AppData\Roaming\Python\Python312\site-packages\jupyter_core\utils\__init__.py", line 165, in wrapped
+    return loop.run_until_complete(inner)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\asyncio\base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\Utente\AppData\Local\Programs\Python\Python312\Lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+columns_of_interest = ['backing_dancers', 'backing_singers', 'final_place']
+data_filtered = data[columns_of_interest].dropna()
+
+# Converte le colonne in boolean per l'analisi
+data_filtered['backing_dancers'] = data_filtered['backing_dancers'] > 0
+data_filtered['backing_singers'] = data_filtered['backing_singers'] > 0
+
+# Analizza l'impatto dei ballerini e dei coristi
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='backing_dancers', y='final_place', data=data_filtered)
+plt.title('Impatto dei Ballerini sul Piazzamento Finale')
+plt.xlabel('Ballerini Presenti')
+plt.ylabel('Piazzamento Finale')
+plt.show()
+
+plt.figure(figsize=(12, 6))
+sns.boxplot(x='backing_singers', y='final_place', data=data_filtered)
+plt.title('Impatto dei Coristi sul Piazzamento Finale')
+plt.xlabel('Coristi Presenti')
+plt.ylabel('Piazzamento Finale')
+plt.show()
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mNameError[0m                                 Traceback (most recent call last)
+Cell [1;32mIn[1], line 2[0m
+[0;32m      1[0m columns_of_interest [38;5;241m=[39m [[38;5;124m'[39m[38;5;124mbacking_dancers[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mbacking_singers[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mfinal_place[39m[38;5;124m'[39m]
+[1;32m----> 2[0m data_filtered [38;5;241m=[39m [43mdata[49m[columns_of_interest][38;5;241m.[39mdropna()
+[0;32m      4[0m [38;5;66;03m# Converte le colonne in boolean per l'analisi[39;00m
+[0;32m      5[0m data_filtered[[38;5;124m'[39m[38;5;124mbacking_dancers[39m[38;5;124m'[39m] [38;5;241m=[39m data_filtered[[38;5;124m'[39m[38;5;124mbacking_dancers[39m[38;5;124m'[39m] [38;5;241m>[39m [38;5;241m0[39m
+
+[1;31mNameError[0m: name 'data' is not defined
+
